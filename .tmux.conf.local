@@ -420,6 +420,10 @@ set -as terminal-features 'xterm*:extkeys'
 # while I don't use tpm myself, many people requested official support so here
 # is a seamless integration that automatically installs plugins in parallel
 
+# use a writable path for the plugin manager so mkdir -p doesn't fail when
+# ~/.config/tmux is a read-only Nix store symlink
+set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.local/share/tmux/plugins"
+
 # whenever a plugin introduces a variable to be used in 'status-left' or
 # 'status-right', you can use it in 'tmux_conf_theme_status_left' and
 # 'tmux_conf_theme_status_right' variables.
